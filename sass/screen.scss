@@ -1,0 +1,35 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "zen-grids";
+
+$zen-columns: 7;
+$zen-gutters: 1em;
+
+.container {
+  @include zen-grid-container();
+}
+
+.aside1 {
+  @include zen-grid-item(2, 1);
+}
+
+.content {
+  @include zen-grid-item(4, 3);
+}
+
+.aside2 {
+  @include zen-grid-item(1, 7);
+}
+
+.footer1 {
+  @include zen-new-row();
+  @include zen-grid-item(3, 5);
+}
+
+.footer2 {
+  @include zen-grid-item(4, 1);
+}

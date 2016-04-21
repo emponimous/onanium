@@ -1,0 +1,16 @@
+@import 'latest_topics';
+
+.head,
+.linkbox {
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.head {
+  font-size: 1.5em;
+}
+
+.colhead,
+.forum_index > tbody > tr > td:nth-of-type(n+4) {
+  display: none;
+}

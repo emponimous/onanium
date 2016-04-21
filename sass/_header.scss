@@ -1,0 +1,155 @@
+// Styles for the main menu go here. That means everything
+// related to the #header element and its children.
+// May also adjust the positioning of #content and #footer
+// but should not affect their contents.
+
+.highlight {
+  font-weight: bold;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+// This is the fullscreen backdrop for the menu.
+// Using #content because I couldn't find another element that
+// filled the requirements for the backdrop:
+//   1. after #header in DOM so that it can be styled on #header:hover;
+//   2. outside of #header so that it doesn't trigger #header:hover;
+//   3. can be positioned fullscreen, behind dropdown menu and
+//      in front of content;
+// TODO: try to achieve the effect using only #header.
+// P.S. Can't use #header::after because it's inside #header
+// and triggers #header:hover itself.
+#content {
+  &::before {
+    @include position(fixed, 0 null null 0);
+    @include size(100% 100%);
+    background: $content-fadeout-mask;
+    content: '';
+    opacity: 0;
+    transition: all .5s ease-out;
+    z-index: -1;
+  }
+}
+
+// Main container for both menus
+#header {
+  @include size(100% 3em);
+  box-shadow: 0 .5em .5em $menu-shadow-color;
+  font-size: 1em;
+
+  // Menu items (links)
+  a {
+    display: block;
+    padding: 1em;
+
+    &:hover {
+      background-color: $menu-item-hover-backgound-color;
+    }
+  }
+
+  // On click/hover, fade in backdrop
+  &:hover,
+  &:active,
+  &:focus {
+    & ~ #content {
+      &::before {
+        opacity: 1;
+        z-index: 10;
+      }
+    }
+  }
+
+  @include breakpoint(400px 700px) {
+    font-size: 2em;
+  };
+
+  @include breakpoint(700px) {
+    font-size: 3em;
+  };
+}
+
+// Properties shared between both menus
+#header_top,
+#header_bottom {
+  @include size(50% 3em);
+  background: $menu-item-background-color;
+  //overflow-y: auto;
+  position: absolute;
+  transition: height .2s linear;
+
+  // Holds the menu title
+  &::before {
+    display: block;
+    font-weight: bold;
+    padding: 1em;
+    z-index: 1000;
+  }
+
+  // On click/hover, drop down the menu
+  &:hover,
+  &:active,
+  &:focus {
+    height: 100%;
+    min-width: 15em;
+    z-index: 100;
+
+    &::before {
+      box-shadow: 0 .25em .25em $menu-shadow-color;
+    }
+  }
+}
+
+#menu,
+#major_stats {
+  height: 0;
+  overflow-y: auto;
+}
+
+// left side menu - navigation
+#header_top {
+  &::before {
+    content: $navigation-title;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: .5em .5em .5em $menu-shadow-color;
+
+    #menu {
+      height: 100%;
+    }
+  }
+}
+
+// right side menu - profile tools
+#header_bottom {
+  @include position(null, 0 0 0 auto);
+  text-align: right;
+
+  &::before {
+    content: $profile-title;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: -.5em .5em .5em $menu-shadow-color;
+
+    #major_stats {
+      height: 100%;
+    }
+  }
+}
+
+// Hide elements that are not essential to save screen space.
+#logo,
+#stats_block,
+#alerts,
+#searchbars,
+#major_stats_left,
+#userinfo_invites {
+  display: none;
+}

@@ -1,0 +1,19 @@
+.latest_topics {
+  display: none;
+}
+
+box.latest_topics {
+  background-color: $forum-post-background-color;
+  text-align: right;
+
+  & > a {
+    display: block;
+    margin-top: 1em;
+    padding: 1em;
+    text-align: left;
+
+    &:not(:first-of-type) {
+      border-top: 1em solid $content-background-color;
+    }
+  }
+}

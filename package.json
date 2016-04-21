@@ -1,0 +1,30 @@
+{
+  "name": "emp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "css/onanium.css",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emponimous/onanium.git"
+  },
+  "author": "onanimous",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/emponimous/onanium/issues"
+  },
+  "homepage": "https://github.com/emponimous/onanium#readme",
+  "devDependencies": {
+    "bourbon": "^4.2.7",
+    "breakpoint-sass": "^2.7.0",
+    "browser-sync": "^2.12.3",
+    "eyeglass": "^0.8.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "normalize-scss": "^4.0.3",
+    "sass-toolkit": "^2.10.0",
+    "singularitygs": "^1.7.0"
+  },
+  "dependencies": {}
+}

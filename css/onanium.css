@@ -1,0 +1,207 @@
+body {
+  background-color: #eee;
+  color: #222;
+  margin: 0;
+}
+
+a {
+  color: #222;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+table,
+tbody,
+tr,
+td {
+  clear: both;
+  display: block;
+  float: left;
+}
+
+tr {
+  background-color: #bbb;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.highlight {
+  font-weight: bold;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+#content::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  content: '';
+  opacity: 0;
+  transition: all .5s ease-out;
+  z-index: -1;
+}
+
+#header {
+  height: 3em;
+  width: 100%;
+  box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+}
+
+#header a {
+  display: block;
+  padding: 1em;
+}
+
+#header a:hover {
+  background-color: #00f;
+}
+
+#header:hover ~ #content::before, #header:active ~ #content::before, #header:focus ~ #content::before {
+  opacity: 1;
+  z-index: 10;
+}
+
+@media (min-width: 400px) and (max-width: 700px) {
+  #header {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 700px) {
+  #header {
+    font-size: 3em;
+  }
+}
+
+#header_top,
+#header_bottom {
+  height: 3em;
+  width: 50%;
+  background: #ddd;
+  position: absolute;
+  transition: height .2s linear;
+}
+
+#header_top::before,
+#header_bottom::before {
+  display: block;
+  font-weight: bold;
+  padding: 1em;
+  z-index: 1000;
+}
+
+#header_top:hover, #header_top:active, #header_top:focus,
+#header_bottom:hover,
+#header_bottom:active,
+#header_bottom:focus {
+  height: 100%;
+  min-width: 15em;
+  z-index: 100;
+}
+
+#header_top:hover::before, #header_top:active::before, #header_top:focus::before,
+#header_bottom:hover::before,
+#header_bottom:active::before,
+#header_bottom:focus::before {
+  box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.5);
+}
+
+#menu,
+#major_stats {
+  height: 0;
+  overflow-y: auto;
+}
+
+#header_top::before {
+  content: "Site Menu";
+}
+
+#header_top:hover, #header_top:active, #header_top:focus {
+  box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+#header_top:hover #menu, #header_top:active #menu, #header_top:focus #menu {
+  height: 100%;
+}
+
+#header_bottom {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  text-align: right;
+}
+
+#header_bottom::before {
+  content: "User Info";
+}
+
+#header_bottom:hover, #header_bottom:active, #header_bottom:focus {
+  box-shadow: -0.5em 0.5em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+#header_bottom:hover #major_stats, #header_bottom:active #major_stats, #header_bottom:focus #major_stats {
+  height: 100%;
+}
+
+#logo,
+#stats_block,
+#alerts,
+#searchbars,
+#major_stats_left,
+#userinfo_invites {
+  display: none;
+}
+
+#index .latest_topics {
+  display: none;
+}
+
+.latest_topics {
+  display: none;
+}
+
+box.latest_topics {
+  background-color: #bbb;
+  text-align: right;
+}
+
+box.latest_topics > a {
+  display: block;
+  margin-top: 1em;
+  padding: 1em;
+  text-align: left;
+}
+
+box.latest_topics > a:not(:first-of-type) {
+  border-top: 1em solid #eee;
+}
+
+.head,
+.linkbox {
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.head {
+  font-size: 1.5em;
+}
+
+.colhead,
+.forum_index > tbody > tr > td:nth-of-type(n+4) {
+  display: none;
+}
